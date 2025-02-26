@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Image Reveal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        .reveal-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 30px auto;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .cover-image {
+            display: block;
+            width: 100%;
+            transition: opacity 0.5s ease;
+        }
+        
+        .hidden-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .reveal-container.active .cover-image {
+            opacity: 0;
+        }
+        
+        .reveal-container.active .hidden-image {
+            opacity: 1;
+        }
+        
+        .image-title {
+            text-align: center;
+            padding: 10px;
+            background-color: #f5f5f5;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .reveal-instruction {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background-color: rgba(0,0,0,0.6);
+            color: white;
+            padding: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click to Reveal Images</h1>
+    
+    <!-- Image 1: Replace the placeholder URLs with your actual image URLs -->
+    <div class="reveal-container" id="image1">
+        <img class="cover-image" src="cover-image-1.jpg" alt="Cover Image 1">
+        <img class="hidden-image" src="hidden-image-1.jpg" alt="Hidden Image 1">
+        <div class="reveal-instruction">Click to reveal</div>
+        <p class="image-title">Image 1 Title</p>
+    </div>
+    
+    <!-- Image 2: Copy this block for each additional image set -->
+    <div class="reveal-container" id="image2">
+        <img class="cover-image" src="cover-image-2.jpg" alt="Cover Image 2">
+        <img class="hidden-image" src="hidden-image-2.jpg" alt="Hidden Image 2">
+        <div class="reveal-instruction">Click to reveal</div>
+        <p class="image-title">Image 2 Title</p>
+    </div>
+    
+    <script>
+        // Add click functionality to each container
+        document.addEventListener('DOMContentLoaded', function() {
+            const containers = document.querySelectorAll('.reveal-container');
+            
+            containers.forEach(container => {
+                container.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
